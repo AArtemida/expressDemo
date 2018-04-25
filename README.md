@@ -6,8 +6,11 @@ express实现简单的mysql操作
 
 ### 2.生成express项目
 其中：
+
 │  app.js -相当于main文件
+│
 │  package-lock.json
+│
 │  package.json
 │  
 ├─bin -启动应用 
