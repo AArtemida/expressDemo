@@ -1,0 +1,42 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #f7f7f7;
+}
+
+a {
+  color: #00B7FF;
+}
+table{
+	border-collapse: collapse;
+	font-weight:normal;
+}
+table tr:nth-child(even){
+	background: #e3edf9;
+}
+table thead tr{background: #9bb6f3;}
+thead td{font-size: 16px;}
+td{
+	border: 1px solid #666;
+	padding: 10px 30px;
+	font-size: 14px;
+	text-align: center;
+}
+table span{
+	color: blueviolet;
+	cursor: pointer;
+}
+input{line-height:20px;padding-left: 5px;}
+.test_form{
+	margin-top: 40px;
+}
+.test_form>div{
+	margin-bottom: 20px;
+}
+.test_form label{
+	width: 78px;
+    display: inline-block;
+}
+table span:hover{color: #6ca3e4; }
+input[name='add']{margin-right: 30px;}
+input[name='modify']{display: none;}

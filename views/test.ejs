@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <table>
+    	<thead>
+    		<tr><td>id</td>
+    		<td>name</td>
+    		<td>password</td>
+    		<td>age</td>
+    		<td>operation</td></tr>
+    	</thead>
+    	<% if(data.length > 0){ %>
+	    	<% data.forEach(function(item){ %>
+	    	<tr>
+	    		<td><%= item.id %></td>
+	    		<td><%= item.userName %></td>
+	    		<td><%= item.password %></td>
+	    		<td><%= item.age %></td>
+	    		<td> <span onclick="update(<%= item.id %>,'<%= item.userName %>','<%= item.password %>',<%= item.age %>)">修改</span>
+	    			&nbsp;&nbsp;|&nbsp;&nbsp;<span onclick="deleteUser(<%= item.id %>);">删除</span> </td>
+	    	</tr>
+	    	<% }) %>
+    	<% } %>
+    </table>
+    <form class="test_form" name="testform">
+    	<div style="display: none;"><label>id：</label><input type="text" name="id"></div>
+    	<div><label>用户名：</label><input type="text" name="username" maxlength="20"></div>
+    	<!--不能输入中文-->
+    	<div><label>密码：</label><input type="text" name="password" maxlength="20" 
+    		onkeyup="value=value.replace(/[\u4e00-\u9fa5]|[“”！？。《》（）：，、【】；]/ig,'')" 
+    		onafterpaste="value=value.replace(/[\u4e00-\u9fa5]|[“”！？。《》（）：，、【】；]/ig,'')"></div>
+    	<!--只能输入数字-->
+    	<div><label>年龄：</label><input type="text" name="age" maxlength="3" 
+    		onkeyup="this.value=this.value.replace(/[^0-9|^\-]/g,'')" 
+    		onafterpaste="this.value=this.value.replace(/[^0-9|^\-]/g,'')"></div>
+    	<input type="submit" name="add" onclick="addUser();">
+    	<input type="submit" name="modify" onclick="modifyUser();" value="确认修改">
+    </form>
+    <script type="text/javascript" src="/javascripts/ajax.js"></script>
+    <script type="text/javascript" src="/javascripts/tabel.js"></script>
+  </body>
+</html>
