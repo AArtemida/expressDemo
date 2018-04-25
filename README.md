@@ -9,19 +9,19 @@ express实现简单的mysql操作
 
 │  app.js -相当于main文件
 │
-│
+
 │  package-lock.json
 │
-│
+
 │  package.json
 │
-│
+
 ├─bin -启动应用 
 │
-│
+
 ├─node_modules
 │
-│
+
 ├─public -存放静态资源目录
 │          
 ├─routes -路由,相当于Controller
