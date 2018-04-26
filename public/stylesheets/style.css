@@ -11,32 +11,92 @@ table{
 	border-collapse: collapse;
 	font-weight:normal;
 }
-table tr:nth-child(even){
-	background: #e3edf9;
-}
-table thead tr{background: #9bb6f3;}
-thead td{font-size: 16px;}
+thead td{font-size: 1.1em;}
 td{
-	border: 1px solid #666;
-	padding: 10px 30px;
-	font-size: 14px;
+	/*border: 1px solid #666;*/
+	padding: 1em 2em;
+	font-size: 1em;
 	text-align: center;
 }
 table span{
-	color: blueviolet;
+	color: #aa6ce3;
 	cursor: pointer;
 }
-input{line-height:20px;padding-left: 5px;}
-.test_form{
-	margin-top: 40px;
+input{line-height:1.95em;padding-left: 0.5em;}
+::selection {
+    background: #68dff0;
+    color: #fff;
 }
-.test_form>div{
-	margin-bottom: 20px;
+input[type="submit"]:focus,button:focus{text-decoration: none;outline: none;}
+input[type="text"]{
+	border:1px solid #ccc;
+	color: #555;
+	background-color: #f7f7f7;
+	border-radius: 5px;
+	width: 16em;
 }
-.test_form label{
-	width: 78px;
-    display: inline-block;
+input[type="submit"],button{
+	border-radius: 5px;
+	padding: 0 2em;
+	box-shadow: 0 0 0;
+	user-select: none;
+    background-image: none;
+    border:1px solid transparent;
 }
-table span:hover{color: #6ca3e4; }
-input[name='add']{margin-right: 30px;}
-input[name='modify']{display: none;}
+input[type="submit"],#confirm{
+	color: #fff;
+    background-color: #68dff0;
+    border-color:#48bcb4;
+}
+input[type="submit"]:hover,#confirm:hover{
+	background: #48bcb4;
+}
+.mask,.mask2{
+	background: rgba(0,0,0,.5);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	display: none;
+}
+/*animate*/
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@keyframes bounceInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-2000px);
+    -ms-transform: translateY(-2000px);
+    transform: translateY(-2000px);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translateY(30px);
+    -ms-transform: translateY(30px);
+    transform: translateY(30px);
+  }
+
+  80% {
+    -webkit-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.bounceInDown {
+  -webkit-animation-name: bounceInDown;
+  animation-name: bounceInDown;
+}
+/*end*/

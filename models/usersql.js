@@ -6,5 +6,6 @@ var UserSQL = {
 	getUserById:'SELECT * FROM test WHERE id = ? ',
 	deleteUser:'DELETE FROM test WHERE id = ? ',
 	updateUser:'UPDATE test SET userName = ?,password = ?,age = ? WHERE id = ? ',
+	deleteMore:'DELETE FROM test WHERE id IN (?)',
 };
 module.exports = UserSQL;

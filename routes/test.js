@@ -43,7 +43,7 @@ router.get('/', function(req, res, next){
 	connection.query(userSQL.queryAll, [], function(err, result) {
 		if(result) {
 			 // responseJSON(res, result);
-			 res.render('test', { title:'Test',data:result});
+			 res.render('test', { title:'用户管理',data:result});
 		}
 		 connection.release();
 		});
@@ -73,7 +73,7 @@ router.all('/register', function(req, res, next){
                     if(err){
                         throw err
                     }else{
-                        res.end(JSON.stringify({status:'100',msg:'添加成功!'}));
+                        res.end(JSON.stringify({status:'200',msg:'添加成功!'}));
                         // res.render('test', { title:'Test',data:results});
                     }
                 })
@@ -95,11 +95,33 @@ router.all('/deleteUser', function(req, res, next){
 		if(err){
             throw err
         }else{
-            res.end(JSON.stringify({status:'100',msg:'删除成功!'}));
+            res.end(JSON.stringify({status:'200',msg:'删除成功!'}));
         }
         connection.release();
 	});
 	});
+});
+// 批量删除
+router.all('/deleteMore', function(req, res, next){
+    pool.getConnection(function(err, connection) {
+    if (req.method == "POST") {
+        var param = req.body;
+    } else{
+        var param = req.query || req.params;
+    }
+    if(param.ids){
+        param.ids = "\'"+param.ids.replace(/_/g,"','")+"\'";
+    }
+    connection.query(userSQL.deleteMore, [param.ids], function(err, result) {
+        if(err){
+            throw err
+        }else{
+             res.end(JSON.stringify({status:'200',msg:'删除成功!'}));
+            // res.render('test', { title:'Test',data:result});
+        }
+        connection.release();
+    });
+    });
 });
 // 更新接口
 router.all('/modifyUser', function(req, res, next){

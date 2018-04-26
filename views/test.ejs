@@ -3,45 +3,63 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/test.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <table>
-    	<thead>
-    		<tr><td>id</td>
-    		<td>name</td>
-    		<td>password</td>
-    		<td>age</td>
-    		<td>operation</td></tr>
-    	</thead>
-    	<% if(data.length > 0){ %>
-	    	<% data.forEach(function(item){ %>
-	    	<tr>
-	    		<td><%= item.id %></td>
-	    		<td><%= item.userName %></td>
-	    		<td><%= item.password %></td>
-	    		<td><%= item.age %></td>
-	    		<td> <span onclick="update(<%= item.id %>,'<%= item.userName %>','<%= item.password %>',<%= item.age %>)">修改</span>
-	    			&nbsp;&nbsp;|&nbsp;&nbsp;<span onclick="deleteUser(<%= item.id %>);">删除</span> </td>
-	    	</tr>
-	    	<% }) %>
-    	<% } %>
-    </table>
-    <form class="test_form" name="testform">
-    	<div style="display: none;"><label>id：</label><input type="text" name="id"></div>
-    	<div><label>用户名：</label><input type="text" name="username" maxlength="20"></div>
-    	<!--不能输入中文-->
-    	<div><label>密码：</label><input type="text" name="password" maxlength="20" 
-    		onkeyup="value=value.replace(/[\u4e00-\u9fa5]|[“”！？。《》（）：，、【】；]/ig,'')" 
-    		onafterpaste="value=value.replace(/[\u4e00-\u9fa5]|[“”！？。《》（）：，、【】；]/ig,'')"></div>
-    	<!--只能输入数字-->
-    	<div><label>年龄：</label><input type="text" name="age" maxlength="3" 
-    		onkeyup="this.value=this.value.replace(/[^0-9|^\-]/g,'')" 
-    		onafterpaste="this.value=this.value.replace(/[^0-9|^\-]/g,'')"></div>
-    	<input type="submit" name="add" onclick="addUser();">
-    	<input type="submit" name="modify" onclick="modifyUser();" value="确认修改">
-    </form>
+    <header><h1><%= title %></h1></header>
+    <article>
+        <table>
+        	<thead>
+        		<tr><td>id</td>
+        		<td>name</td>
+        		<td>password</td>
+        		<td>age</td>
+        		<td>operation</td></tr>
+        	</thead>
+        	<% if(data.length > 0){ %>
+    	    	<% data.forEach(function(item){ %>
+    	    	<tr>
+    	    		<td><div class="checkbox" onclick="selectBox(<%= item.id %>,this);"></div><%= item.id %></td>
+    	    		<td><%= item.userName %></td>
+    	    		<td><%= item.password %></td>
+    	    		<td><%= item.age %></td>
+    	    		<td> <span onclick="update(<%= item.id %>,'<%= item.userName %>','<%= item.password %>',<%= item.age %>)">修改</span>
+    	    			&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="deleteUser(<%= item.id %>);">删除</span> </td>
+    	    	</tr>
+    	    	<% }) %>
+        	<% } %>
+        </table>
+        <div class="buttonbox">
+            <button id="show_add">添加</button>
+            <button id="show_delete">批量删除</button>
+        </div>
+        <div class="mask">
+            <div class="fbox">
+                <p>用户信息</p><span class="close">X</span>
+                <form class="test_form" name="testform">
+                	<div style="display: none;"><label>id：</label><input type="text" name="id"></div>
+                	<div><label>用户名：</label><input type="text" name="username" maxlength="20"></div>
+                	<!--不能输入中文-->
+                	<div><label>密码：</label><input type="text" name="password" maxlength="20" 
+                		onkeyup="value=value.replace(/[\u4e00-\u9fa5]|[“”！？。《》（）：，、【】；]/ig,'')" 
+                		onafterpaste="value=value.replace(/[\u4e00-\u9fa5]|[“”！？。《》（）：，、【】；]/ig,'')"></div>
+                	<!--只能输入数字-->
+                	<div><label>年龄：</label><input type="text" name="age" maxlength="3" 
+                		onkeyup="this.value=this.value.replace(/[^0-9|^\-]/g,'')" 
+                		onafterpaste="this.value=this.value.replace(/[^0-9|^\-]/g,'')"></div>
+                	<input type="submit" name="add" onclick="addUser();">
+                	<input type="submit" name="modify" onclick="modifyUser();" value="确认修改">
+                </form>
+            </div>
+        </div>
+        <div class="mask2">
+            <div class="tip">
+                <p>确认删除？</p>
+                <button id="confirm">确认</button>
+                <button id="cancel">取消</button>
+            </div>
+        </div>
+    </article>
     <script type="text/javascript" src="/javascripts/ajax.js"></script>
     <script type="text/javascript" src="/javascripts/tabel.js"></script>
   </body>
