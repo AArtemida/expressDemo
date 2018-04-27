@@ -24,8 +24,17 @@ express实现简单的mysql操作
 
 └─views -模板文件所在目录,相当于视图
 
-### 新建文件夹models存放数据库配置文件
+### 3.新建文件夹models存放数据库配置文件
+一个文件存放数据库的配置信息；一个文件存放一个表的sql语句；
 
-### 新建路由并实现接口
+### 4.新建路由并实现接口
+在路由中导入mysql模块并连接数据库进行操作；
 
-其他就是前端操作了
+### 5.实现登录验证
+可以配置 express-session，方便处理session
+
+npm install express-session --save
+
+根据session设置拦截器，退出登录时清空session
+
+### 前端使用ejs模板引擎

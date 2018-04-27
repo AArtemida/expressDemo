@@ -6,7 +6,7 @@
     <link rel='stylesheet' href='/stylesheets/test.css' />
   </head>
   <body>
-    <header><h1><%= title %></h1></header>
+    <header><h1><%= title %><span class="uname"><%= uname %></span><span id="logout" onclick="logout();">退出</span></h1></header>
     <article>
         <table>
         	<thead>
@@ -14,18 +14,26 @@
         		<td>name</td>
         		<td>password</td>
         		<td>age</td>
+                <td>identity</td>
         		<td>operation</td></tr>
         	</thead>
         	<% if(data.length > 0){ %>
     	    	<% data.forEach(function(item){ %>
+                <% if(item.userName != uname){ %>
     	    	<tr>
     	    		<td><div class="checkbox" onclick="selectBox(<%= item.id %>,this);"></div><%= item.id %></td>
     	    		<td><%= item.userName %></td>
     	    		<td><%= item.password %></td>
     	    		<td><%= item.age %></td>
-    	    		<td> <span onclick="update(<%= item.id %>,'<%= item.userName %>','<%= item.password %>',<%= item.age %>)">修改</span>
-    	    			&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="deleteUser(<%= item.id %>);">删除</span> </td>
+                    <td><%= item.identity %></td>
+                    <td>
+                        <span onclick="update(<%= item.id %>,'<%= item.userName %>','<%= item.password %>',<%= item.age %>)">修改</span>
+                    <% if(item.identity == 'user'){ %>
+    	    			&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="deleteUser(<%= item.id %>);">删除</span>
+                    <% } %>
+                    </td>
     	    	</tr>
+                <% } %>
     	    	<% }) %>
         	<% } %>
         </table>
@@ -47,9 +55,9 @@
                 	<div><label>年龄：</label><input type="text" name="age" maxlength="3" 
                 		onkeyup="this.value=this.value.replace(/[^0-9|^\-]/g,'')" 
                 		onafterpaste="this.value=this.value.replace(/[^0-9|^\-]/g,'')"></div>
-                	<input type="submit" name="add" onclick="addUser();">
-                	<input type="submit" name="modify" onclick="modifyUser();" value="确认修改">
                 </form>
+                    <input type="submit" name="add" onclick="addUser();">
+                    <input type="submit" name="modify" onclick="modifyUser();" value="确认修改">
             </div>
         </div>
         <div class="mask2">

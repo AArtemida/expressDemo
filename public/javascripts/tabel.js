@@ -18,7 +18,13 @@
 		  data:{"username":name,"password":pass,"age":age},
 		  success:function(data){
 		    console.log(data);
-		    location.reload();
+		    if(data){
+		    	if(data.status == 200){
+		    		location.reload();
+		    	}else if(data.msg){
+		    		alert(data.msg);
+		    	}
+			}
 		  },
 		  error:function(){
 		    console.log("error")
@@ -33,7 +39,13 @@
 		  data:{"id":id},
 		  success:function(data){
 		    console.log(data);
-		    location.reload();
+		   if(data){
+		    	if(data.status == 200){
+		    		location.reload();
+		    	}else {
+		    		alert("失败！");
+		    	}
+			}
 		  },
 		  error:function(){
 		    console.log("error")
@@ -53,7 +65,13 @@
 		  data:{"ids":ids},
 		  success:function(data){
 		    console.log(data);
-		    location.reload();
+		    if(data){
+		    	if(data.status == 200){
+		    		location.reload();
+		    	}else {
+		    		alert("失败！");
+		    	}
+			}
 		  },
 		  error:function(){
 		    console.log("error")
@@ -76,7 +94,28 @@
 		  data:{"id":id,"username":name,"password":pass,"age":age},
 		  success:function(data){
 		    console.log(data);
-		    location.reload();
+		   if(data){
+		    	if(data.status == 200){
+		    		location.reload();
+		    	}else {
+		    		alert("失败！");
+		    	}
+			}
+		  },
+		  error:function(){
+		    console.log("error")
+		  }
+		})
+	}
+
+	function logout(){
+		ajax({
+		  type:"POST",
+		  url:"/test/logout",
+		  dataType:"json",
+		  data:{},
+		  success:function(data){
+		    console.log(data);
 		  },
 		  error:function(){
 		    console.log("error")
@@ -127,6 +166,7 @@
 	}
 	show_delete.onclick = function(){
 		if(selectArr.length == 0){
+			alert('请勾选用户！')
 			return;
 		}
 		mask2.style.display = 'block';

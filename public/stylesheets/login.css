@@ -1,0 +1,33 @@
+body{
+	background: url(../images/banner.jpg) 0 10% no-repeat;
+}
+.loginbox{
+	background: #fff;
+    width: 25em;
+    box-sizing: border-box;
+    border-radius: 0.8em;
+    margin: 10% auto 0 auto;
+    box-shadow: 3px 4px 4px #666;
+    position: relative;
+    text-align: center;
+}
+.loginbox input{
+	margin-top: 1.85em;
+	width: 21.5em;
+	line-height:2.3em;
+}
+#submit{
+	margin: 2.5em 0 3em 0;
+}
+.loginbox p{
+	margin: 0;
+    padding: 0.9em;
+    text-align: center;
+    background: #68dff0;
+    border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    color: #fff;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    font-weight: bold;
+}

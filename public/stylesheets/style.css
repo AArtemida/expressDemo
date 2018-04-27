@@ -14,7 +14,7 @@ table{
 thead td{font-size: 1.1em;}
 td{
 	/*border: 1px solid #666;*/
-	padding: 1em 2em;
+	padding: 1em 1.5em;
 	font-size: 1em;
 	text-align: center;
 }
@@ -57,7 +57,30 @@ input[type="submit"]:hover,#confirm:hover{
 	width: 100%;
 	height: 100%;
 	top: 0;
+	left: 0;
 	display: none;
+}
+#logout,.uname{
+	position: absolute;
+	right: 2em;
+	font-weight: normal;
+	font-size: 0.45em;
+	top: 1.2em;
+	display: inline-block;
+	cursor: pointer;
+    border-radius: 5px;
+    padding: 0.35em 0.8em;
+    color: #888;
+    background: rgba(221,221,221,.7);
+}
+#logout:hover{
+	background: #68dff0;
+	color: #fff;
+}
+.uname{
+	right: 85px;
+	cursor: auto;
+	background: transparent;
 }
 /*animate*/
 

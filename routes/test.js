@@ -37,17 +37,25 @@ router.get('/addUser', function(req, res, next){
 });
 // 查询用户
 router.get('/', function(req, res, next){
-	// 从连接池获取连接
-	pool.getConnection(function(err, connection) {
+     var uname = '';
+     if(req.session && req.session.userName){
+        uname = req.session.userName;
+     }
+     if(uname != ''){
+    	// 从连接池获取连接
+    	pool.getConnection(function(err, connection) {
 
-	connection.query(userSQL.queryAll, [], function(err, result) {
-		if(result) {
-			 // responseJSON(res, result);
-			 res.render('test', { title:'用户管理',data:result});
-		}
-		 connection.release();
-		});
-	});
+    	connection.query(userSQL.queryAll, [], function(err, result) {
+    		if(result) {
+    			 // responseJSON(res, result);
+    			 res.render('test', { title:'用户管理',uname:uname,data:result});
+    		}
+    		 connection.release();
+    		});
+    	});
+    }else{
+        res.redirect('/login');
+    }
 });
 
 /* GET home page. */
@@ -73,12 +81,12 @@ router.all('/register', function(req, res, next){
                     if(err){
                         throw err
                     }else{
-                        res.end(JSON.stringify({status:'200',msg:'添加成功!'}));
+                        res.send(JSON.stringify({status:'200',msg:'添加成功!'}));
                         // res.render('test', { title:'Test',data:results});
                     }
                 })
                 } else{ // 数据库存在就注册失败
-                    res.end(JSON.stringify({status:'101',msg:'该用户名已存在'}));
+                    res.send(JSON.stringify({status:'101',msg:'该用户名已存在'}));
                 }
        }
     })
@@ -95,7 +103,7 @@ router.all('/deleteUser', function(req, res, next){
 		if(err){
             throw err
         }else{
-            res.end(JSON.stringify({status:'200',msg:'删除成功!'}));
+            res.send(JSON.stringify({status:'200',msg:'删除成功!'}));
         }
         connection.release();
 	});
@@ -135,12 +143,24 @@ router.all('/modifyUser', function(req, res, next){
 		if(err){
             throw err
         }else{
-             res.end(JSON.stringify({status:'100',msg:'修改成功!'}));
+             res.end(JSON.stringify({status:'200',msg:'修改成功!'}));
             // res.render('test', { title:'Test',data:result});
         }
         connection.release();
 	});
 	});
+});
+
+router.all('/logout', function(req, res, next){
+  req.session.destroy(function(err) {
+    if(err){
+      res.send({status: 100, msg: '退出登录失败'});
+    }else{
+    // req.session.userName = null;
+    // res.clearCookie(identityKey);
+        res.redirect('/login');
+    }
+  });
 });
 
 module.exports = router;

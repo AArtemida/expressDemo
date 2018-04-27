@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/login.css' />
+  </head>
+  <body>
+  	<div class="mask" style="display: block;"></div>
+<!--     <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p> -->
+    <div class="loginbox">
+    	<p>登录</p>
+    	<form class="login_form" name="loginform">
+    		<input type="text" name="username" maxlength="20" placeholder="用户名">
+        	<!--不能输入中文-->
+        	<input type="text" name="password" maxlength="20" placeholder="密码" 
+        		onkeyup="value=value.replace(/[\u4e00-\u9fa5]|[“”！？。《》（）：，、【】；]/ig,'')" 
+        		onafterpaste="value=value.replace(/[\u4e00-\u9fa5]|[“”！？。《》（）：，、【】；]/ig,'')">
+    	</form>
+    	<input type="submit" name="" id="submit">
+    </div>
+    <script type="text/javascript" src="/javascripts/ajax.js"></script>
+    <script type="text/javascript" src="/javascripts/loginFun.js"></script>
+  </body>
+</html>
