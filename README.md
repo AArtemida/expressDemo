@@ -37,4 +37,5 @@ npm install express-session --save
 
 根据session设置拦截器，退出登录时清空session
 
-### 前端使用ejs模板引擎
+### 6.前端使用ejs模板引擎
+ps:退出登陆和批量操作
