@@ -152,15 +152,17 @@ router.all('/modifyUser', function(req, res, next){
 });
 
 router.all('/logout', function(req, res, next){
-  req.session.destroy(function(err) {
-    if(err){
-      res.send({status: 100, msg: '退出登录失败'});
-    }else{
-    // req.session.userName = null;
-    // res.clearCookie(identityKey);
-        res.redirect('/login');
-    }
-  });
+    req.session.userName = null;
+  //   res.redirect('/login');
+  // req.session.destroy(function(err) {
+  //   if(err){
+  //     res.send({status: 100, msg: '退出登录失败'});
+  //   }else{
+  //   // req.session.userName = null;
+  //   // res.clearCookie(identityKey);
+  //       res.redirect('/login');
+  //   }
+  // });
 });
 
 module.exports = router;
