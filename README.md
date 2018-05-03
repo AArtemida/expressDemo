@@ -42,7 +42,7 @@ ps:退出登陆和批量操作还需修改
 
 ### 由于该项目主要用来练习操作mysql，所以模块比较简单：
 登录页：
-![image](img/15253160.png.jpg)
+![image](img/15253160.png)
 
 管理页：
-![image](img/15253161.png.jpg)
+![image](img/15253161.png)
