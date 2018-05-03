@@ -38,4 +38,11 @@ npm install express-session --save
 根据session设置拦截器，退出登录时清空session
 
 ### 6.前端使用ejs模板引擎
-ps:退出登陆和批量操作
+ps:退出登陆和批量操作还需修改
+
+### 由于该项目主要用来练习操作mysql，所以模块比较简单：
+登录页：
+![image](img/15253160.png.jpg)
+
+管理页：
+![image](img/15253161.png.jpg)
